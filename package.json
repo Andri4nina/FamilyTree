@@ -1,0 +1,8 @@
+{
+"scripts": {
+    "start": "concurrently \"npm run start:dev --prefix stockify-backend\" \"npm run dev --prefix Stockify\" "
+  },
+  "dependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
