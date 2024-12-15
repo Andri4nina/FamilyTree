@@ -9,7 +9,6 @@ export class AuthController {
     @Post('login')
     async login(@Body() body: { email: string; password: string }) {
       const { email, password } = body;
-  
       // Appel au service d'authentification pour obtenir le token
       return this.authService.login(email, password);
     }
