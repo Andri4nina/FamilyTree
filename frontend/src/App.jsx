@@ -5,11 +5,13 @@ import Nav from "./component/Nav";
 import IndexPage from "./page/IndexPage";
 import Loader from "./component/Loader";
 import { AuthStatus } from "./hook/useAuth";
+import userService from "./service/UserService";
 
 
 function App() {
   const { userData, status } = useAuthCheck();
   const [loading, setLoading] = useState(true);
+  const [adminCreated, setAdminCreated] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
@@ -51,6 +53,31 @@ function App() {
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
+  
+
+  useEffect(() => {
+    const checkUserAndCreateAdmin = async () => {
+      try {
+        // Vérifier si l'utilisateur avec ID 1 existe
+        const response = await userService.getUserById(1);
+        if (response.data === "") {
+            await userService.addAdminUsers();
+        }else{
+          setAdminCreated(true); 
+        }
+      } catch (error) {
+        // Si l'utilisateur n'existe pas, nous allons créer un admin
+        if (error.response && error.response.status === 404) {
+          await userService.addAdminUsers();
+          setAdminCreated(true); // Mettre à jour l'état pour indiquer que l'admin a été créé
+        } else {
+          console.error('Error fetching user:', error);
+        }
+      }
+    };
+
+    checkUserAndCreateAdmin();
+  }, []);
   
   if (status === AuthStatus.Unknown) {
     return (
