@@ -1,42 +1,76 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+*,body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955)s ease-in;
+    -webkit-transition:  all cubic-bezier(0.455, 0.03, 0.515, 0.955)s ease-in;
+    -moz-transition:  all cubic-bezier(0.455, 0.03, 0.515, 0.955)s ease-in;
+    -ms-transition:  all cubic-bezier(0.455, 0.03, 0.515, 0.955)s ease-in;
+    -o-transition:  all cubic-bezier(0.455, 0.03, 0.515, 0.955)s ease-in;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+section{
+  background-image: radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0);
+  background-size: 30px 30px;
+  background-position: -5px -5px
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+h1,h2,h3,h4,h5,h6{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+*::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  *::-webkit-scrollbar-thumb{
+  border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+  background-color: #0004;
+  visibility: hidden;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  *:hover::-webkit-scrollbar-thumb{
+  visibility: visible;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+  
+  
+  .loader {
+    width: 44.8px;
+    height: 44.8px;
+    position: relative;
+    background: radial-gradient(11.2px,currentColor 94%,#0000);
+  }
+  
+  .loader:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(10.08px at bottom right,#0000 94%,currentColor) top    left,
+            radial-gradient(10.08px at bottom left ,#0000 94%,currentColor) top    right,
+            radial-gradient(10.08px at top    right,#0000 94%,currentColor) bottom left,
+            radial-gradient(10.08px at top    left ,#0000 94%,currentColor) bottom right;
+    background-size: 22.4px 22.4px;
+    background-repeat: no-repeat;
+    animation: loader 1.5s infinite cubic-bezier(0.3,1,0,1);
+  }
+  
+  @keyframes loader {
+    33% {
+      inset: -11.2px;
+      transform: rotate(0deg);
+    }
+  
+    66% {
+      inset: -11.2px;
+      transform: rotate(90deg);
+    }
+  
+    100% {
+      inset: 0;
+      transform: rotate(90deg);
+    }
+  }
